@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.github.hysrabbit.agecorrector.mybatis.mapper.PersonMapper">
+
+    <select id="findByBirthday" resultType="com.github.hysrabbit.agecorrector.mybatis.entity.Person">
+        SELECT
+            id,
+            name,
+            age,
+            birthday
+        FROM
+            person
+        WHERE
+            Date_format(birthday, '%m%d') = Date_format(sysdate(), '%m%d')
+    </select>
+
+    <update id="save">
+        update
+            person
+        set
+            age = #{age}
+        where
+            id = #{id}
+    </update>
+
+</mapper>
