@@ -24,3 +24,6 @@ hs_err_pid*
 
 # intellij idea
 .idea/
+
+# White List
+!/gradle/wrapper/gradle-wrapper.jar
