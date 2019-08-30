@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface PersonMapper {
 
-    public List<Person> findByBirthday(LocalDate birthday);
+    public List<Person> findByBirthday(LocalDate today);
 
     public Integer save(Person person);
 

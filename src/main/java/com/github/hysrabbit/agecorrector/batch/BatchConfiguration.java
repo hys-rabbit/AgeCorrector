@@ -18,6 +18,10 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+
 @Configuration
 @EnableBatchProcessing
 @RequiredArgsConstructor
@@ -33,9 +37,12 @@ public class BatchConfiguration {
 
     @Bean
     public MyBatisCursorItemReader<Person> reader() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("today", LocalDate.now());
         return new MyBatisCursorItemReaderBuilder<Person>()
                 .sqlSessionFactory(sqlSessionFactory)
                 .queryId("com.github.hysrabbit.agecorrector.mybatis.mapper.PersonMapper.findByBirthday")
+                .parameterValues(params)
                 .build();
     }
 
