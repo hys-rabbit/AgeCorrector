@@ -13,7 +13,7 @@
         FROM
             person
         WHERE
-            Date_format(birthday, '%m%d') = Date_format(sysdate(), '%m%d')
+            Date_format(birthday, '%m%d') = Date_format(#{today}, '%m%d')
     </select>
 
     <update id="save">
